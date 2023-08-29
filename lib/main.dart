@@ -17,9 +17,9 @@ class Bank extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF022E64),
         // appBarTheme: ,
       ),
-      initialRoute: '/',
+      initialRoute: LoginScreen.id,
       routes: {
-        // LoginScreen.id: (context) => const LoginScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
         // ForgotPasswordScreen.id: (context) => ForgotPasswordScreen(),
         // HomeScreen.id: (context) => HomeScreen(),
       },
