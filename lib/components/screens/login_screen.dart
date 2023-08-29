@@ -20,6 +20,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 91.0),
+                child: Image.asset('assets/images/app_icon.png'),
+              ),
               Container(
                 margin: const EdgeInsets.only(left: 16.0, right: 16.0),
                 padding: const EdgeInsets.only(left: 20.0),
@@ -34,6 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Email',
                   textAlign: TextAlign.left,
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Color(0xFF212121),
                   ),
                 ),
@@ -54,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Password',
                   textAlign: TextAlign.left,
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Color(0xFF212121),
                   ),
                 ),
@@ -79,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text(
                     'Login',
                     style: TextStyle(
+                      fontFamily: 'OpenSans',
                       color: Color(0xFF212121),
                       fontWeight: FontWeight.bold,
                     ),
@@ -95,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text('Forgot Password?',
                     style: TextStyle(
+                      fontFamily: 'OpenSans',
                       color: Color(0xFFF5F5F5),
                       fontWeight: FontWeight.w400,
                     )),

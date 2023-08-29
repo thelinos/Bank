@@ -38,19 +38,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                   'Good morning',
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12.0,
-                                  ),
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12.0,
+                                      fontFamily: 'OpenSans'),
                                 ),
                               ),
                               Container(
                                 child: const Text(
                                   'Mr. John Jimoh',
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16.0),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.0,
+                                    fontFamily: 'OpenSans',
+                                  ),
                                 ),
                               ),
                             ],
@@ -64,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       width: 81.03,
                       height: 32,
-                      child: Image.asset('images/app_icon.png'),
+                      child: Image.asset('assets/images/app_icon.png'),
                     ),
                   )
                 ],
@@ -89,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
                       fontSize: 14.0,
+                      fontFamily: 'OpenSans',
                     ),
                   ),
                   Text(
@@ -108,6 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 10,
+                          fontFamily: 'OpenSans',
                         ),
                       ),
                       Text(
@@ -116,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 10,
+                          fontFamily: 'OpenSans',
                         ),
                       )
                     ],
@@ -136,6 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Color(0xFF001530),
                       fontWeight: FontWeight.w600,
                       fontSize: 14.0,
+                      fontFamily: 'OpenSans',
                     ),
                   ),
                   Text(
@@ -165,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             margin: const EdgeInsets.only(
                               right: 14.02,
                             ),
-                            child: Image.asset('images/debit.png'),
+                            child: Image.asset('assets/images/debit.png'),
                           ),
                           Column(
                             children: [
@@ -179,6 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Color(0xFF212121),
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
                                         ),
                                       ),
                                       Container(
@@ -196,6 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           'Debit',
                                           style: TextStyle(
                                             color: Color(0xFF022E64),
+                                            fontFamily: 'OpenSans',
                                           ),
                                         ),
                                       ),
@@ -205,14 +213,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: const Text(
                                       '01-02-2021',
                                       style: TextStyle(
-                                          color: Color(0xFF616161),
-                                          fontSize: 10.0,
-                                          fontWeight: FontWeight.w400),
+                                        color: Color(0xFF616161),
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'OpenSans',
+                                      ),
                                     ),
                                   )
                                 ],
                               ),
-                              Text('#Gift')
+                              Text(
+                                '#Gift',
+                                style: TextStyle(
+                                  fontFamily: 'OpenSans',
+                                ),
+                              )
                             ],
                           )
                         ],
@@ -230,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             margin: const EdgeInsets.only(
                               right: 14.02,
                             ),
-                            child: Image.asset('images/credit.png'),
+                            child: Image.asset('assets/images/credit.png'),
                           ),
                           Column(
                             children: [
@@ -244,6 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Color(0xFF212121),
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16.0,
+                                          fontFamily: 'OpenSans',
                                         ),
                                       ),
                                       Container(
@@ -261,6 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           'credit',
                                           style: TextStyle(
                                             color: Color(0xFFE0AD0F),
+                                            fontFamily: 'OpenSans',
                                           ),
                                         ),
                                       ),
@@ -270,14 +287,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: const Text(
                                       '01-02-2021',
                                       style: TextStyle(
-                                          color: Color(0xFF616161),
-                                          fontSize: 10.0,
-                                          fontWeight: FontWeight.w400),
+                                        color: Color(0xFF616161),
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'OpenSans',
+                                      ),
                                     ),
                                   )
                                 ],
                               ),
-                              const Text('#Gift')
+                              const Text(
+                                '#Gift',
+                                style: TextStyle(fontFamily: 'OpenSans'),
+                              )
                             ],
                           )
                         ],
@@ -316,6 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Color(0xFFE6B014),
                             fontWeight: FontWeight.w700,
                             fontSize: 11,
+                            fontFamily: 'OpenSans',
                           ),
                         )
                       ],
@@ -342,6 +365,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             'Transaction',
                             style: TextStyle(
                               color: Color(0xFF022E64),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 11,
+                              fontFamily: 'OpenSans',
                             ),
                           )
                         ],

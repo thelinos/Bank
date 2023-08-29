@@ -32,6 +32,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   'New Password',
                   textAlign: TextAlign.left,
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Color(0xFF212121),
                   ),
                 ),
@@ -52,6 +53,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   'Confirm New Password',
                   textAlign: TextAlign.left,
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     color: Color(0xFF212121),
                   ),
                 ),
@@ -77,6 +79,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   child: const Text(
                     'Reset Password',
                     style: TextStyle(
+                      fontFamily: 'OpenSans',
                       color: Color(0xFF212121),
                       fontWeight: FontWeight.bold,
                     ),
