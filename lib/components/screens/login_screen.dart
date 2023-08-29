@@ -1,4 +1,5 @@
 import 'package:bank_app/components/screens/forgot_password.dart';
+import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -61,6 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 68.0,
               ),
               GestureDetector(
+                onTap: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  // );
+                },
                 child: Container(
                   margin: const EdgeInsets.only(left: 16.0, right: 16.0),
                   width: 343.0,

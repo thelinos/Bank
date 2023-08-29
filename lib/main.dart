@@ -21,7 +21,7 @@ class Bank extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
-        // HomeScreen.id: (context) => HomeScreen(),
+        // HomeScreen.id: (context) => const HomeScreen(),
       },
     );
   }
