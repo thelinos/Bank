@@ -16,12 +16,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       body: SafeArea(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 margin: const EdgeInsets.only(left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(left: 20.0),
                 width: 343.0,
                 height: 56.0,
-                color: Colors.white,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0)),
                 alignment: Alignment.centerLeft,
                 child: const Text(
                   'New Password',
@@ -36,9 +40,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
               Container(
                 margin: const EdgeInsets.only(left: 16.0, right: 16.0),
+                padding: const EdgeInsets.only(left: 20.0),
                 width: 343.0,
                 height: 56.0,
-                color: Colors.white,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0)),
                 alignment: Alignment.centerLeft,
                 child: const Text(
                   'Confirm New Password',
@@ -51,17 +58,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               const SizedBox(
                 height: 68.0,
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                width: 343.0,
-                height: 56.0,
-                color: const Color(0xFFE6B014),
-                alignment: Alignment.center,
-                child: const Text(
-                  'Reset Password',
-                  style: TextStyle(
-                    color: Color(0xFF212121),
-                    fontWeight: FontWeight.bold,
+              GestureDetector(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 16.0, right: 16.0),
+                  width: 343.0,
+                  height: 56.0,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFE6B014),
+                      borderRadius: BorderRadius.circular(20.0)),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Reset Password',
+                    style: TextStyle(
+                      color: Color(0xFF212121),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

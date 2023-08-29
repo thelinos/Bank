@@ -1,3 +1,4 @@
+import 'package:bank_app/components/screens/forgot_password.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -78,8 +79,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               TextButton(
-                onPressed: () {},
-                child: Text('Forgot Password?',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ForgotPasswordScreen()),
+                  );
+                },
+                child: const Text('Forgot Password?',
                     style: TextStyle(
                       color: Color(0xFFF5F5F5),
                       fontWeight: FontWeight.w400,
