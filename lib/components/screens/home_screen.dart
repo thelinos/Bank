@@ -1,4 +1,6 @@
+import 'package:bank_app/components/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   GestureDetector(
                     child: Container(
-                      padding: EdgeInsets.only(right: 88.0),
+                      padding: const EdgeInsets.only(right: 88.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -310,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Row(
@@ -321,8 +323,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       vertical: 8.0,
                       horizontal: 63.5,
                     ),
-                    color: Color(0xFF022E64),
-                    child: Column(
+                    color: const Color(0xFF022E64),
+                    child: const Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -345,8 +347,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (content) => const TransactionScreen()));
+                    },
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                       ),
                       padding:
