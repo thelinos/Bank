@@ -1,8 +1,7 @@
 import 'package:bank_app/components/screens/forgot_password.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:bank_app/components/screens/login_screen.dart';
-
-// import 'package:bank_app/components/screens/profile_screen.dart';
+import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:bank_app/components/screens/transaction_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class Bank extends StatelessWidget {
         ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
         TransactionScreen.id: (content) => const TransactionScreen(),
-        // ProfileScreen.id: (content) => const ProfileScreen(),
+        ProfileScreen.id: (content) => const ProfileScreen(),
       },
     );
   }
