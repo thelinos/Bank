@@ -1,3 +1,4 @@
+import 'package:bank_app/components/screens/change_account_password_screen.dart';
 import 'package:bank_app/components/screens/forgot_password.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:bank_app/components/screens/login_screen.dart';
@@ -17,8 +18,8 @@ class Bank extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xFF022E64),
         scaffoldBackgroundColor: const Color(0xFF022E64),
-        appBarTheme: AppBarTheme(
-          backgroundColor: const Color(0xFF022E64),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF022E64),
         ),
       ),
       initialRoute: LoginScreen.id,
@@ -28,6 +29,8 @@ class Bank extends StatelessWidget {
         HomeScreen.id: (context) => const HomeScreen(),
         TransactionScreen.id: (content) => const TransactionScreen(),
         ProfileScreen.id: (content) => const ProfileScreen(),
+        ChangeAccountPasswordScreen.id: (content) =>
+            const ChangeAccountPasswordScreen(),
       },
     );
   }

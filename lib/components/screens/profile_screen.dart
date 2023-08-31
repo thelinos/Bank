@@ -1,3 +1,4 @@
+import 'package:bank_app/components/screens/change_account_password_screen.dart';
 import 'package:bank_app/components/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -108,6 +109,13 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (content) =>
+                            const ChangeAccountPasswordScreen()));
+              },
               child: Container(
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(
@@ -239,9 +247,9 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             vertical: 12.0,
             horizontal: 17.52,
           ),
