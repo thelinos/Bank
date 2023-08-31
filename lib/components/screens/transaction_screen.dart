@@ -1,3 +1,4 @@
+import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class TransactionScreen extends StatefulWidget {
@@ -22,6 +23,12 @@ class _TransactionScreenState extends State<TransactionScreen> {
               child: Row(
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (content) => const ProfileScreen()));
+                    },
                     child: Container(
                       padding: const EdgeInsets.only(right: 88.0),
                       child: Row(

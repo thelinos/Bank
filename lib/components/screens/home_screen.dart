@@ -1,6 +1,7 @@
+import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:bank_app/components/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+// import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,6 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (content) => const ProfileScreen()));
+                    },
                     child: Container(
                       padding: const EdgeInsets.only(right: 88.0),
                       child: Row(

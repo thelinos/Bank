@@ -19,6 +19,7 @@ dependencies:
   json_annotation: ^4.8.1
   provider: ^6.0.5
   auto_size_text: ^3.0.0
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
