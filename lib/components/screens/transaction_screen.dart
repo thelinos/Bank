@@ -1,5 +1,6 @@
 import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class TransactionScreen extends StatefulWidget {
   const TransactionScreen({super.key});
@@ -339,7 +340,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Icon(
-                              Icons.home,
+                              Iconsax.home1,
                               color: Color(0xFF022E64),
                               size: 32.0,
                             ),
@@ -368,7 +369,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         Padding(
                           padding: EdgeInsets.all(4.0),
                           child: Icon(
-                            Icons.transfer_within_a_station_outlined,
+                            Iconsax.receipt4,
                             size: 32,
                             color: Color(0xFFE6B014),
                           ),

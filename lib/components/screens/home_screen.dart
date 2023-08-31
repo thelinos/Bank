@@ -1,6 +1,7 @@
 import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:bank_app/components/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 // import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -336,7 +337,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Icon(
-                            Icons.home,
+                            Iconsax.home1,
                             color: Color(0xFFE6B014),
                             size: 32.0,
                           ),
@@ -371,7 +372,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: EdgeInsets.all(4.0),
                             child: Icon(
-                              Icons.transfer_within_a_station_outlined,
+                              Iconsax.receipt4,
                               size: 32,
                               color: Color(0xFF022E64),
                             ),
