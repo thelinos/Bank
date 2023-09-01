@@ -1,3 +1,4 @@
+import 'package:bank_app/components/reusableComponents/transaction_type.dart';
 import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:bank_app/components/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
@@ -41,29 +42,33 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.only(right: 7.0),
                             child: Image.asset('images/Union.png'),
                           ),
-                          Column(
+                          const Column(
                             children: [
-                              Container(
-                                child: const Text(
-                                  'Good morning',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
+                              Row(
+                                children: [
+                                  Text(
+                                    'Good morning',
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12.0,
+                                        fontFamily: 'OpenSans'),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Mr. John Jimoh',
+                                    style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 12.0,
-                                      fontFamily: 'OpenSans'),
-                                ),
-                              ),
-                              Container(
-                                child: const Text(
-                                  'Mr. John Jimoh',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16.0,
-                                    fontFamily: 'OpenSans',
+                                      fontSize: 16.0,
+                                      fontFamily: 'OpenSans',
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ],
                           ),
@@ -83,33 +88,57 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
+              width: 375,
+              height: 156,
               decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[Color(0xFFE0AD0F), Color(0xFFA07801)],
-              )),
-              padding: const EdgeInsets.only(
-                  top: 36.45, left: 16.0, right: 16.0, bottom: 37.0),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[Color(0xFFE0AD0F), Color(0xFFA07801)],
+                ),
+              ),
+              padding: EdgeInsets.only(
+                left: 16.0,
+                right: 16.0,
+              ),
               child: const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Account Balance',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.0,
-                      fontFamily: 'OpenSans',
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 8.0,
                     ),
-                  ),
-                  Text(
-                    'GHC 10,000.00',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 36.0,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Account Balance',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14.0,
+                                fontFamily: 'OpenSans',
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 2.0,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'GHC 10,000.00',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 36.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   Row(
@@ -169,151 +198,126 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 child: Column(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 17.52),
-                      margin: const EdgeInsets.only(bottom: 1.45),
-                      child: Row(
+                    ListTile(
+                      leading: Image.asset('assets/images/debit.png'),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            width: 46.02,
-                            height: 46.02,
-                            margin: const EdgeInsets.only(
-                              right: 14.02,
-                            ),
-                            child: Image.asset('assets/images/debit.png'),
-                          ),
-                          Column(
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  Row(
-                                    children: [
-                                      const Text(
-                                        'GHC 50.00',
-                                        style: TextStyle(
-                                          color: Color(0xFF212121),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16.0,
-                                          fontFamily: 'OpenSans',
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          left: 7.0,
-                                          right: 96.84,
-                                        ),
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 5.26, horizontal: 8.76),
-                                        decoration: BoxDecoration(
-                                            color: Color(0xFF78C8E1),
-                                            borderRadius:
-                                                BorderRadius.circular(5.26)),
-                                        child: const Text(
-                                          'Debit',
-                                          style: TextStyle(
-                                            color: Color(0xFF022E64),
-                                            fontFamily: 'OpenSans',
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    child: const Text(
-                                      '01-02-2021',
-                                      style: TextStyle(
-                                        color: Color(0xFF616161),
-                                        fontSize: 10.0,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'OpenSans',
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Text(
-                                '#Gift',
+                              const Text(
+                                'GHC 50.00',
                                 style: TextStyle(
+                                  color: Color(0xFF212121),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
                                   fontFamily: 'OpenSans',
                                 ),
-                              )
+                              ),
+                              TransactionType(
+                                containerColor:
+                                    const Color(0xFF78C8E1).withOpacity(0.08),
+                                textColor: const Color(0xFF022E64),
+                                transactionText: 'Debit',
+                              ),
                             ],
+                          ),
+                          const Text(
+                            '01-02-2021',
+                            style: TextStyle(
+                              fontFamily: 'OpenSans',
+                              color: Color(0xFF616161),
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                            ),
                           )
+                        ],
+                      ),
+                      subtitle: const Row(
+                        children: [
+                          Text(
+                            '#',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Color(0xFF022E64),
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            'Gift',
+                            style: TextStyle(
+                              fontFamily: 'OpenSans',
+                              color: Color(0xFF616161),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.0,
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 17.52),
-                      margin: const EdgeInsets.only(bottom: 1.45),
-                      child: Row(
+                    Divider(
+                      height: 0,
+                    ),
+                    ListTile(
+                      leading: Image.asset('assets/images/credit.png'),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 46.02,
-                            height: 46.02,
-                            margin: const EdgeInsets.only(
-                              right: 14.02,
-                            ),
-                            child: Image.asset('assets/images/credit.png'),
-                          ),
-                          Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Row(
-                                    children: [
-                                      const Text(
-                                        'GHC 1,500.00',
-                                        style: TextStyle(
-                                          color: Color(0xFF212121),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16.0,
-                                          fontFamily: 'OpenSans',
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          left: 7.0,
-                                          right: 70.84,
-                                        ),
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 5.26, horizontal: 8.76),
-                                        decoration: BoxDecoration(
-                                            color: Color(0xFFE0AD0F),
-                                            borderRadius:
-                                                BorderRadius.circular(5.26)),
-                                        child: const Text(
-                                          'credit',
-                                          style: TextStyle(
-                                            color: Color(0xFFE0AD0F),
-                                            fontFamily: 'OpenSans',
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                            child: Row(
+                              children: [
+                                const Text(
+                                  'GHC 1,500.00',
+                                  style: TextStyle(
+                                    color: Color(0xFF212121),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0,
+                                    fontFamily: 'OpenSans',
                                   ),
-                                  Container(
-                                    child: const Text(
-                                      '01-02-2021',
-                                      style: TextStyle(
-                                        color: Color(0xFF616161),
-                                        fontSize: 10.0,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'OpenSans',
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              const Text(
-                                '#Gift',
-                                style: TextStyle(fontFamily: 'OpenSans'),
-                              )
-                            ],
+                                ),
+                                TransactionType(
+                                  containerColor:
+                                      const Color(0xFFE0AD0F).withOpacity(0.08),
+                                  textColor: const Color(0xFFE0AD0F),
+                                  transactionText: 'Credit',
+                                )
+                              ],
+                            ),
+                          ),
+                          Text(
+                            '01-02-2021',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Color(0xFF616161),
+                                fontSize: 10,
+                                fontWeight: FontWeight.w400),
                           )
                         ],
                       ),
+                      subtitle: const Row(
+                        children: [
+                          Text(
+                            '#',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Color(0xFFE0AD0F),
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            'Inflow',
+                            style: TextStyle(
+                              fontFamily: 'OpenSans',
+                              color: Color(0xFF616161),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      height: 0,
                     ),
                   ],
                 ),

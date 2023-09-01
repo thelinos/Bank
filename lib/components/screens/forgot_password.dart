@@ -1,3 +1,4 @@
+import 'package:bank_app/components/reusableComponents/reusable_card.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         flexibleSpace: SafeArea(
           child: Container(
             width: 81.03,
@@ -33,44 +35,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-              padding: const EdgeInsets.only(left: 20.0),
-              width: 343.0,
-              height: 56.0,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0)),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                'New Password',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontFamily: 'OpenSans',
-                  color: Color(0xFF212121),
-                ),
-              ),
-            ),
+            const ReusableCard(
+                text: 'New Password',
+                cardColor: Colors.white,
+                textColor: Color(0xFF212121),
+                alignment: Alignment.centerLeft),
             const SizedBox(
               height: 16.0,
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-              padding: const EdgeInsets.only(left: 20.0),
-              width: 343.0,
-              height: 56.0,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20.0)),
+            const ReusableCard(
+              text: 'Confirm New Password',
+              cardColor: Colors.white,
+              textColor: Color(0xFF212121),
               alignment: Alignment.centerLeft,
-              child: const Text(
-                'Confirm New Password',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontFamily: 'OpenSans',
-                  color: Color(0xFF212121),
-                ),
-              ),
             ),
             const SizedBox(
               height: 68.0,
@@ -82,22 +59,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
               },
-              child: Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                width: 343.0,
-                height: 56.0,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFE6B014),
-                    borderRadius: BorderRadius.circular(20.0)),
+              child: const ReusableCard(
+                text: 'Reset Password',
+                cardColor: Color(0xFFE6B014),
+                textColor: Color(0xFF212121),
                 alignment: Alignment.center,
-                child: const Text(
-                  'Reset Password',
-                  style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    color: Color(0xFF212121),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ),
             ),
           ],

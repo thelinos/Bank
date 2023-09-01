@@ -15,6 +15,7 @@ class Bank extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xFF022E64),
         scaffoldBackgroundColor: const Color(0xFF022E64),

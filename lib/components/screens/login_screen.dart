@@ -1,3 +1,4 @@
+import 'package:bank_app/components/reusableComponents/reusable_card.dart';
 import 'package:bank_app/components/screens/forgot_password.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,45 +25,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.only(bottom: 91.0),
                 child: Image.asset('assets/images/app_icon.png'),
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                padding: const EdgeInsets.only(left: 20.0),
-                width: 343.0,
-                height: 56.0,
+              const ReusableCard(
+                text: 'Email',
+                cardColor: Colors.white,
+                textColor: Color(0xFF212121),
                 alignment: Alignment.centerLeft,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                child: const Text(
-                  'Email',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    color: Color(0xFF212121),
-                  ),
-                ),
               ),
               const SizedBox(
                 height: 16.0,
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                padding: EdgeInsets.only(left: 20.0),
-                width: 343.0,
-                height: 56.0,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0)),
+              const ReusableCard(
+                text: 'Password',
+                cardColor: Colors.white,
+                textColor: Color(0xFF212121),
                 alignment: Alignment.centerLeft,
-                child: const Text(
-                  'Password',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    color: Color(0xFF212121),
-                  ),
-                ),
               ),
               const SizedBox(
                 height: 68.0,
@@ -74,22 +50,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     MaterialPageRoute(builder: (context) => const HomeScreen()),
                   );
                 },
-                child: Container(
-                  margin: const EdgeInsets.only(left: 16.0, right: 16.0),
-                  width: 343.0,
-                  height: 56.0,
-                  decoration: BoxDecoration(
-                      color: const Color(0xFFE6B014),
-                      borderRadius: BorderRadius.circular(20.0)),
+                child: const ReusableCard(
+                  text: 'Login',
+                  cardColor: Color(0xFFE6B014),
+                  textColor: Color(0xFF212121),
                   alignment: Alignment.center,
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      fontFamily: 'OpenSans',
-                      color: Color(0xFF212121),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                 ),
               ),
               TextButton(

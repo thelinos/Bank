@@ -17,6 +17,7 @@ class _ChangeAccountPasswordScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         flexibleSpace: SafeArea(
           child: Container(
             width: 81.03,
