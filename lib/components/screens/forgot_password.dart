@@ -1,5 +1,6 @@
 import 'package:bank_app/components/reusableComponents/reusable_card.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
+import 'package:bank_app/components/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -56,7 +57,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const SplashScreen()),
                 );
               },
               child: const ReusableCard(

@@ -35,29 +35,20 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset('assets/images/Union_profile.png'),
-                  Container(
-                    child: Column(
+                  const Expanded(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
                           children: [
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text('FIRST NAME'),
                                 Text('JOHN'),
                               ],
                             ),
-                            Column(
-                              children: [
-                                Text('OTHER NAMES'),
-                                Text('JIMOH'),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
                             Column(
                               children: [
                                 Text('GENDER'),
@@ -66,18 +57,30 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             Column(
                               children: [
-                                Text('TITLE'),
-                                Text('MR. '),
+                                Text('ID'),
+                                Text('2339922'),
                               ],
                             ),
                           ],
                         ),
-                        Row(
+                        Column(
                           children: [
                             Column(
                               children: [
-                                Text('ID'),
-                                Text('23399922'),
+                                Text('LAST NAME'),
+                                Text('JIMOH'),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text('TITLE'),
+                                Text('MR'),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text('TITLE'),
+                                Text('MR'),
                               ],
                             ),
                           ],

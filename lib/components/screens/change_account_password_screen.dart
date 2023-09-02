@@ -1,4 +1,4 @@
-import 'package:bank_app/components/screens/home_screen.dart';
+import 'package:bank_app/components/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChangeAccountPasswordScreen extends StatefulWidget {
@@ -103,7 +103,7 @@ class _ChangeAccountPasswordScreenState
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const SplashScreen()),
                 );
               },
               child: Container(

@@ -3,6 +3,7 @@ import 'package:bank_app/components/screens/forgot_password.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:bank_app/components/screens/login_screen.dart';
 import 'package:bank_app/components/screens/profile_screen.dart';
+import 'package:bank_app/components/screens/splash_screen.dart';
 import 'package:bank_app/components/screens/transaction_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class Bank extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
+        SplashScreen.id: (context) => const SplashScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
         TransactionScreen.id: (content) => const TransactionScreen(),
         ProfileScreen.id: (content) => const ProfileScreen(),

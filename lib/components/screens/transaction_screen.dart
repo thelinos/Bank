@@ -1,10 +1,17 @@
-import 'package:bank_app/components/reusableComponents/transaction_type.dart';
+import 'package:bank_app/components/reusableComponents/transaction_tiles.dart';
 import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TransactionScreen extends StatefulWidget {
-  const TransactionScreen({super.key});
+  final List? customerStaticData;
+  final List? customerTransactionData;
+
+  const TransactionScreen({
+    super.key,
+    this.customerStaticData,
+    this.customerTransactionData,
+  });
 
   static const String id = 'transaction_screen';
 
@@ -14,6 +21,27 @@ class TransactionScreen extends StatefulWidget {
 
 class _TransactionScreenState extends State<TransactionScreen> {
   @override
+  void initState() {
+    super.initState();
+    updateUI(widget.customerStaticData, widget.customerTransactionData);
+  }
+
+  // For the customer static data
+  late final String customerName;
+  late final String title;
+
+  // For the customer transaction data
+  late final List customerTransactionData;
+
+  void updateUI(dynamic customerStaticData, dynamic customerTransactionData) {
+    // For the customer static data
+    customerName = customerStaticData[0]["customerName"];
+    title = customerStaticData[0]["title"];
+
+    // For the customer transaction data
+    this.customerTransactionData = customerTransactionData;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -38,9 +66,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 7.0),
-                            child: Image.asset('images/Union.png'),
+                            child: Image.asset('assets/images/Union.png'),
                           ),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 child: const Text(
@@ -167,101 +196,23 @@ class _TransactionScreenState extends State<TransactionScreen> {
             Expanded(
               child: Container(
                 color: Colors.white,
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: Image.asset('assets/images/debit.png'),
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Row(
-                              children: [
-                                const Text(
-                                  'GHC 50.00',
-                                  style: TextStyle(
-                                    color: Color(0xFF212121),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0,
-                                    fontFamily: 'OpenSans',
-                                  ),
-                                ),
-                                TransactionType(
-                                  containerColor:
-                                      const Color(0xFF78C8E1).withOpacity(0.08),
-                                  textColor: const Color(0xFF022E64),
-                                  transactionText: 'Debit',
-                                ),
-                              ],
-                            ),
-                          ),
-                          Text(
-                            '01-02-2021',
-                            style: TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Color(0xFF616161),
-                              fontSize: 10,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
-                      ),
-                      subtitle: Text(
-                        '#Gift',
-                        style: TextStyle(fontFamily: 'OpenSans'),
-                      ),
-                    ),
-                    Divider(
-                      height: 0,
-                    ),
-                    ListTile(
-                      leading: Image.asset('assets/images/credit.png'),
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Row(
-                              children: [
-                                const Text(
-                                  'GHC 1,500.00',
-                                  style: TextStyle(
-                                    color: Color(0xFF212121),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0,
-                                    fontFamily: 'OpenSans',
-                                  ),
-                                ),
-                                TransactionType(
-                                  containerColor:
-                                      const Color(0xFFE0AD0F).withOpacity(0.08),
-                                  textColor: const Color(0xFFE0AD0F),
-                                  transactionText: 'Credit',
-                                )
-                              ],
-                            ),
-                          ),
-                          Text(
-                            '01-02-2021',
-                            style: TextStyle(
-                                fontFamily: 'OpenSans',
-                                color: Color(0xFF616161),
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                      subtitle: const Text('#Gift',
-                          style: TextStyle(
-                            fontFamily: 'OpenSans',
-                            color: Color(0xFF616161),
-                            fontSize: 10,
-                            fontWeight: FontWeight.w400,
-                          )),
-                    ),
-                    Divider(
-                      height: 0,
-                    ),
-                  ],
+                child: ListView.separated(
+                  itemCount: customerTransactionData.length,
+                  itemBuilder: (context, index) {
+                    return TransactionTiles(
+                      transactionDate: customerTransactionData[index]
+                          ["transactionDate"],
+                      transactionAmount: customerTransactionData[index]
+                          ["transactionAmount"],
+                      transactionDirection: customerTransactionData[index]
+                          ["transactionDirection"],
+                      transactionNarration: customerTransactionData[index]
+                          ["transactionNarration"],
+                    );
+                  },
+                  separatorBuilder: (context, int index) => const Divider(
+                    height: 0,
+                  ),
                 ),
               ),
             ),
