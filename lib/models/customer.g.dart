@@ -7,8 +7,13 @@ part of 'customer.dart';
 // **************************************************************************
 
 Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
-      customerStaticData: json['customerStaticData'] as List<dynamic>,
-      customerTransactionData: json['customerTransactionData'] as List<dynamic>,
+      customerStaticData: (json['customerStaticData'] as List<dynamic>)
+          .map((e) => e as Map<String, dynamic>)
+          .toList(),
+      customerTransactionData:
+          (json['customerTransactionData'] as List<dynamic>)
+              .map((e) => e as Map<String, dynamic>)
+              .toList(),
     );
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{

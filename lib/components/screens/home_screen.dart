@@ -6,8 +6,8 @@ import 'package:iconsax/iconsax.dart';
 // import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
-  final List? customerStaticData;
-  final List? customerTransactionData;
+  final List<Map<String, dynamic>>? customerStaticData;
+  final List<Map<String, dynamic>>? customerTransactionData;
 
   const HomeScreen({
     super.key,
@@ -25,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    updateUI(widget.customerStaticData, widget.customerTransactionData);
+    updateUI(widget.customerStaticData,
+        widget.customerTransactionData?.reversed.toList());
   }
 
   // For the customer static data
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late final String title;
 
   // For the customer transaction data
-  late final List customerTransactionData;
+  late final List<Map<String, dynamic>> customerTransactionData;
 
   void updateUI(dynamic customerStaticData, dynamic customerTransactionData) {
     // For the customer static data
@@ -60,7 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (content) => ProfileScreen()));
+                              builder: (content) => ProfileScreen(
+                                    customerStaticData:
+                                        widget.customerStaticData,
+                                  )));
                     },
                     child: Container(
                       padding: EdgeInsets.only(right: 88.0),
@@ -292,8 +296,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (content) => TransactionScreen(
                                     customerStaticData:
                                         widget.customerStaticData,
-                                    customerTransactionData:
-                                        widget.customerTransactionData,
+                                    customerTransactionData: widget
+                                        .customerTransactionData?.reversed
+                                        .toList(),
                                   )));
                     },
                     child: Container(

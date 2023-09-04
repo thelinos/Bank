@@ -1,4 +1,3 @@
-// import 'package:bank_app/services/customer_data.dart';
 import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:bank_app/services/customer_data.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,8 @@
+import 'package:bank_app/components/reusableComponents/transaction_details.dart';
 import 'package:bank_app/components/reusableComponents/transaction_type.dart';
 import 'package:flutter/material.dart';
 
-class TransactionTiles extends StatefulWidget {
+class TransactionTiles extends StatelessWidget {
   const TransactionTiles({
     super.key,
     required this.transactionDate,
@@ -11,96 +12,33 @@ class TransactionTiles extends StatefulWidget {
   });
 
   final String transactionDate;
-  final int transactionAmount;
+  final String transactionAmount;
   final String transactionDirection;
   final String transactionNarration;
 
-  @override
-  State<TransactionTiles> createState() => _TransactionTilesState();
-}
-
-class _TransactionTilesState extends State<TransactionTiles> {
-  late final String transactionDate = widget.transactionDate;
-  late final int transactionAmount = widget.transactionAmount;
-  late final String transactionDirection =
-      getDirectionTitle(widget.transactionDirection);
-  late final String transactionNarration = widget.transactionNarration;
-  late final String directionImageUrl =
-      getDirectionImage(widget.transactionDirection);
-  late final Color hashColor =
-      getDirectionHashColor(widget.transactionDirection);
-  late final Color containerColor =
-      getDirectionContainerColor(widget.transactionDirection);
-  late final Color directionTextColor =
-      getDirectionTextColor(widget.transactionDirection);
-
-  String getDirectionTitle(String n) {
-    final String transactionNarration;
-    if (n == 'C') {
-      transactionNarration = 'Credit';
-    } else {
-      transactionNarration = 'Debit';
-    }
-    return transactionNarration;
-  }
-
-  String getDirectionImage(String d) {
-    final String url;
+  bool isCredit(String d) {
+    bool n;
     if (d == 'C') {
-      url = 'assets/images/credit.png';
+      n = true;
     } else {
-      url = 'assets/images/debit.png';
+      n = false;
     }
-    return url;
-  }
-
-  Color getDirectionContainerColor(String n) {
-    Color hashColor;
-
-    if (n == 'C') {
-      hashColor = const Color(0xFFE0AD0F).withOpacity(0.08);
-    } else {
-      hashColor = const Color(0xFF78C8E1).withOpacity(0.08);
-    }
-
-    return hashColor;
-  }
-
-  Color getDirectionHashColor(String n) {
-    Color hashColor;
-
-    if (n == 'C') {
-      hashColor = const Color(0xFFE0AD0F);
-    } else {
-      hashColor = const Color(0xFF022E64);
-    }
-
-    return hashColor;
-  }
-
-  Color getDirectionTextColor(String n) {
-    Color directionTextColor;
-
-    if (n == 'C') {
-      directionTextColor = Color(0xFFE0AD0F);
-    } else {
-      directionTextColor = const Color(0xFF022E64);
-    }
-
-    return directionTextColor;
+    return n;
   }
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(directionImageUrl),
+      leading: Image.asset(isCredit(transactionDirection)
+          ? 'assets/images/credit.png'
+          : 'assets/images/debit.png'),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               Text(
-                'GHC $transactionAmount',
+                'GHC $transactionAmount.00',
                 style: const TextStyle(
                   color: Color(0xFF212121),
                   fontWeight: FontWeight.bold,
@@ -109,9 +47,14 @@ class _TransactionTilesState extends State<TransactionTiles> {
                 ),
               ),
               TransactionType(
-                containerColor: containerColor,
-                textColor: directionTextColor,
-                transactionText: transactionDirection,
+                containerColor: isCredit(transactionDirection)
+                    ? const Color(0xFFE0AD0F).withOpacity(0.08)
+                    : const Color(0xFF78C8E1).withOpacity(0.08),
+                textColor: isCredit(transactionDirection)
+                    ? const Color(0xFFE0AD0F)
+                    : const Color(0xFF022E64),
+                transactionText:
+                    isCredit(transactionDirection) ? 'Credit' : 'Debit',
               ),
             ],
           ),
@@ -132,7 +75,9 @@ class _TransactionTilesState extends State<TransactionTiles> {
             '#',
             style: TextStyle(
                 fontFamily: 'OpenSans',
-                color: hashColor,
+                color: isCredit(transactionDirection)
+                    ? const Color(0xFFE0AD0F)
+                    : const Color(0xFF022E64),
                 fontSize: 12.0,
                 fontWeight: FontWeight.w700),
           ),
@@ -147,6 +92,16 @@ class _TransactionTilesState extends State<TransactionTiles> {
           ),
         ],
       ),
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) => TransactionDetail(
+            transactionDate: transactionDate,
+            transactionDirection: transactionDirection,
+            transactionNarration: transactionNarration,
+          ),
+        );
+      },
     );
   }
 }

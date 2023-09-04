@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, this.customerStaticData});
+
+  final List<Map<String, dynamic>>? customerStaticData;
 
   static const String id = 'profile_screen';
 
@@ -35,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Image.asset('assets/images/Union_profile.png'),
-                  const Expanded(
+                  Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,13 +54,15 @@ class ProfileScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text('GENDER'),
-                                Text('MALE'),
+                                Text(customerStaticData?[0]["gender"] == "M"
+                                    ? "MALE"
+                                    : " "),
                               ],
                             ),
                             Column(
                               children: [
                                 Text('ID'),
-                                Text('2339922'),
+                                Text(customerStaticData?[0]["customerID"]),
                               ],
                             ),
                           ],
@@ -74,13 +78,13 @@ class ProfileScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text('TITLE'),
-                                Text('MR'),
+                                Text(customerStaticData?[0]["title"]),
                               ],
                             ),
                             Column(
                               children: [
                                 Text('TITLE'),
-                                Text('MR'),
+                                Text(customerStaticData?[0]["title"]),
                               ],
                             ),
                           ],

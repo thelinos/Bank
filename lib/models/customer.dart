@@ -4,8 +4,8 @@ part 'customer.g.dart';
 
 @JsonSerializable()
 class Customer {
-  final List customerStaticData;
-  final List customerTransactionData;
+  final List<Map<String, dynamic>> customerStaticData;
+  final List<Map<String, dynamic>> customerTransactionData;
 
   const Customer({
     required this.customerStaticData,

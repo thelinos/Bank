@@ -18,7 +18,7 @@ class Bank extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF022E64),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF022E64)),
         scaffoldBackgroundColor: const Color(0xFF022E64),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF022E64),
@@ -29,7 +29,7 @@ class Bank extends StatelessWidget {
         LoginScreen.id: (context) => const LoginScreen(),
         ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
         SplashScreen.id: (context) => const SplashScreen(),
-        HomeScreen.id: (context) => const HomeScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
         TransactionScreen.id: (content) => const TransactionScreen(),
         ProfileScreen.id: (content) => const ProfileScreen(),
         ChangeAccountPasswordScreen.id: (content) =>
