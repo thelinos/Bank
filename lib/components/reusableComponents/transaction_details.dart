@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TransactionDetail extends StatelessWidget {
-  final String transactionDate;
-  final String transactionDirection;
-  final String transactionNarration;
+  final String? transactionDate;
+  final String? transactionDirection;
+  final String? transactionNarration;
 
   const TransactionDetail({
     super.key,
-    required this.transactionDate,
-    required this.transactionDirection,
-    required this.transactionNarration,
+    this.transactionDate,
+    this.transactionDirection,
+    this.transactionNarration,
   });
 
   bool isCredit(String d) {
@@ -131,7 +131,7 @@ class TransactionDetail extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        transactionDate,
+                        transactionDate!,
                         style: TextStyle(
                           color: Color(0xff212121),
                           fontFamily: 'OpenSans',
@@ -159,7 +159,7 @@ class TransactionDetail extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          isCredit(transactionDirection) ? 'Credit' : 'Debit',
+                          isCredit(transactionDirection!) ? 'Credit' : 'Debit',
                           style: const TextStyle(
                             color: Color(0xff212121),
                             fontFamily: 'OpenSans',
@@ -183,7 +183,7 @@ class TransactionDetail extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        transactionNarration,
+                        transactionNarration!,
                         style: const TextStyle(
                           color: Color(0xff212121),
                           fontFamily: 'OpenSans',

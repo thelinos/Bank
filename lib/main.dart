@@ -8,7 +8,9 @@ import 'package:bank_app/components/screens/transaction_screen.dart';
 
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Bank());
+void main() => runApp(
+      const Bank(),
+    );
 
 class Bank extends StatelessWidget {
   const Bank({super.key});
@@ -26,14 +28,14 @@ class Bank extends StatelessWidget {
       ),
       initialRoute: LoginScreen.id,
       routes: {
-        LoginScreen.id: (context) => const LoginScreen(),
-        ForgotPasswordScreen.id: (context) => const ForgotPasswordScreen(),
-        SplashScreen.id: (context) => const SplashScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        ForgotPasswordScreen.id: (context) => ForgotPasswordScreen(),
+        SplashScreen.id: (context) => SplashScreen(),
         HomeScreen.id: (context) => HomeScreen(),
-        TransactionScreen.id: (content) => const TransactionScreen(),
-        ProfileScreen.id: (content) => const ProfileScreen(),
+        TransactionScreen.id: (content) => TransactionScreen(),
+        ProfileScreen.id: (content) => ProfileScreen(),
         ChangeAccountPasswordScreen.id: (content) =>
-            const ChangeAccountPasswordScreen(),
+            ChangeAccountPasswordScreen(),
       },
     );
   }

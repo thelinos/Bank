@@ -13,11 +13,11 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> getJsonData() async {
-    GetCustomerData getCustomerData = GetCustomerData();
-
+    CustomerData customerData = CustomerData();
     var (customerStaticData, customerTransactionData) =
-        await getCustomerData.loadJsonData();
+        await customerData.loadJsonData();
 
+    Navigator.pop(context);
     Navigator.push(
       context,
       MaterialPageRoute(

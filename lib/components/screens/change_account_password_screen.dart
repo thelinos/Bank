@@ -1,18 +1,11 @@
 import 'package:bank_app/components/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-class ChangeAccountPasswordScreen extends StatefulWidget {
+class ChangeAccountPasswordScreen extends StatelessWidget {
   const ChangeAccountPasswordScreen({super.key});
 
   static const String id = 'change_account_password_screen';
 
-  @override
-  State<ChangeAccountPasswordScreen> createState() =>
-      _ChangeAccountPasswordScreenState();
-}
-
-class _ChangeAccountPasswordScreenState
-    extends State<ChangeAccountPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

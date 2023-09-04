@@ -3,48 +3,19 @@ import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:bank_app/components/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-// import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatefulWidget {
-  final List<Map<String, dynamic>>? customerStaticData;
-  final List<Map<String, dynamic>>? customerTransactionData;
-
+class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
     this.customerStaticData,
     this.customerTransactionData,
   });
 
+  final List<Map<String, dynamic>>? customerStaticData;
+  final List<Map<String, dynamic>>? customerTransactionData;
   static const String id = 'home_screen';
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-    updateUI(widget.customerStaticData,
-        widget.customerTransactionData?.reversed.toList());
-  }
-
-  // For the customer static data
-  late final String customerName;
-  late final String title;
-
-  // For the customer transaction data
-  late final List<Map<String, dynamic>> customerTransactionData;
-
-  void updateUI(dynamic customerStaticData, dynamic customerTransactionData) {
-    // For the customer static data
-    customerName = customerStaticData[0]["customerName"];
-    title = customerStaticData[0]["title"];
-
-    // For the customer transaction data
-    this.customerTransactionData = customerTransactionData;
-  }
-
+  // @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,19 +23,20 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                   top: 8.0, left: 16.0, bottom: 16.0, right: 16.0),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (content) => ProfileScreen(
-                                    customerStaticData:
-                                        widget.customerStaticData,
-                                  )));
+                        context,
+                        MaterialPageRoute(
+                          builder: (content) => ProfileScreen(
+                            customerStaticData: customerStaticData,
+                          ),
+                        ),
+                      );
                     },
                     child: Container(
                       padding: EdgeInsets.only(right: 88.0),
@@ -98,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 children: [
                                   Text(
-                                    '$title  $customerName',
+                                    '${customerStaticData?[0]["title"]}  ${customerStaticData?[0]["customerName"]}',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
@@ -234,17 +206,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 color: Colors.white,
                 child: ListView.separated(
-                  itemCount: customerTransactionData.length,
+                  itemCount: customerTransactionData!.length,
                   itemBuilder: (context, index) {
                     return TransactionTiles(
-                      transactionDate: customerTransactionData[index]
-                          ["transactionDate"],
-                      transactionAmount: customerTransactionData[index]
-                          ["transactionAmount"],
-                      transactionDirection: customerTransactionData[index]
-                          ["transactionDirection"],
-                      transactionNarration: customerTransactionData[index]
-                          ["transactionNarration"],
+                      transactionDate: customerTransactionData?.reversed
+                          .toList()[index]["transactionDate"],
+                      transactionAmount: customerTransactionData?.reversed
+                          .toList()[index]["transactionAmount"],
+                      transactionDirection: customerTransactionData?.reversed
+                          .toList()[index]["transactionDirection"],
+                      transactionNarration: customerTransactionData?.reversed
+                          .toList()[index]["transactionNarration"],
                     );
                   },
                   separatorBuilder: (context, int index) => const Divider(
@@ -294,11 +266,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (content) => TransactionScreen(
-                                    customerStaticData:
-                                        widget.customerStaticData,
-                                    customerTransactionData: widget
-                                        .customerTransactionData?.reversed
-                                        .toList(),
+                                    customerStaticData: customerStaticData,
+                                    customerTransactionData:
+                                        customerTransactionData,
                                   )));
                     },
                     child: Container(

@@ -1,18 +1,12 @@
 import 'package:bank_app/components/reusableComponents/reusable_card.dart';
-import 'package:bank_app/components/screens/home_screen.dart';
 import 'package:bank_app/components/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
 
   static const String id = 'Forgot_password';
 
-  @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
-}
-
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

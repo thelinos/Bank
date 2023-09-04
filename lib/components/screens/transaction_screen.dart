@@ -4,10 +4,7 @@ import 'package:bank_app/components/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TransactionScreen extends StatefulWidget {
-  final List<Map<String, dynamic>>? customerStaticData;
-  final List<Map<String, dynamic>>? customerTransactionData;
-
+class TransactionScreen extends StatelessWidget {
   const TransactionScreen({
     super.key,
     this.customerStaticData,
@@ -16,44 +13,10 @@ class TransactionScreen extends StatefulWidget {
 
   static const String id = 'transaction_screen';
 
-  @override
-  State<TransactionScreen> createState() => _TransactionScreenState();
-}
+  final List<Map<String, dynamic>>? customerTransactionData;
+  final List<Map<String, dynamic>>? customerStaticData;
 
-class _TransactionScreenState extends State<TransactionScreen> {
-  @override
-  void initState() {
-    super.initState();
-    updateUI(widget.customerStaticData, widget.customerTransactionData);
-  }
-
-  // For the customer static data
-  late final String customerName;
-  late final String title;
-
-  // For the customer transaction data
-  late final List<Map<String, dynamic>> customerTransactionData;
-
-  void updateUI(List<Map<String, dynamic>>? customerStaticData,
-      List<Map<String, dynamic>>? customerTransactionData) {
-    // For the customer static data
-    customerName = customerStaticData?[0]["customerName"];
-    title = customerStaticData?[0]["title"];
-
-    // For the customer transaction data
-    this.customerTransactionData = customerTransactionData!;
-  }
-
-  late final List<Map<String, dynamic>> creditFilteredCustomerData =
-      customerTransactionData
-          .where((element) => element["transactionDirection"] == "C")
-          .toList();
-
-  late final List<Map<String, dynamic>> debitFilteredCustomerData =
-      customerTransactionData
-          .where((element) => element["transactionDirection"] == "D")
-          .toList();
-
+  // @override
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -73,9 +36,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (content) => ProfileScreen(
-                                      customerStaticData:
-                                          widget.customerStaticData,
-                                    )));
+                                    customerStaticData: customerStaticData)));
                       },
                       child: Container(
                         padding: const EdgeInsets.only(right: 88.0),
@@ -106,7 +67,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                                 Row(
                                   children: [
                                     Text(
-                                      '$title  $customerName',
+                                      '${customerStaticData?[0]["title"]}  ${customerStaticData?[0]["customerName"]}',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
@@ -205,36 +166,37 @@ class _TransactionScreenState extends State<TransactionScreen> {
                   child: TabBarView(
                     children: [
                       ListView.separated(
-                        itemCount: customerTransactionData.length,
+                        itemCount: customerTransactionData!.length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
                                 builder: (context) => TransactionDetail(
-                                  transactionDate:
-                                      customerTransactionData[index]
-                                          ["transactionDate"],
-                                  transactionDirection:
-                                      customerTransactionData[index]
-                                          ["transactionDirection"],
-                                  transactionNarration:
-                                      customerTransactionData[index]
-                                          ["transactionNarration"],
+                                  transactionDate: customerTransactionData
+                                      ?.reversed
+                                      .toList()[index]["transactionDate"],
+                                  transactionDirection: customerTransactionData
+                                      ?.reversed
+                                      .toList()[index]["transactionDirection"],
+                                  transactionNarration: customerTransactionData
+                                      ?.reversed
+                                      .toList()[index]["transactionNarration"],
                                 ),
                               );
                             },
                             child: TransactionTiles(
-                              transactionDate: customerTransactionData[index]
-                                  ["transactionDate"],
-                              transactionAmount: customerTransactionData[index]
-                                  ["transactionAmount"],
-                              transactionDirection:
-                                  customerTransactionData[index]
-                                      ["transactionDirection"],
-                              transactionNarration:
-                                  customerTransactionData[index]
-                                      ["transactionNarration"],
+                              transactionDate: customerTransactionData?.reversed
+                                  .toList()[index]["transactionDate"],
+                              transactionAmount: customerTransactionData
+                                  ?.reversed
+                                  .toList()[index]["transactionAmount"],
+                              transactionDirection: customerTransactionData
+                                  ?.reversed
+                                  .toList()[index]["transactionDirection"],
+                              transactionNarration: customerTransactionData
+                                  ?.reversed
+                                  .toList()[index]["transactionNarration"],
                             ),
                           );
                         },
@@ -243,37 +205,68 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         ),
                       ),
                       ListView.separated(
-                        itemCount: debitFilteredCustomerData.length,
+                        itemCount: customerTransactionData!
+                            .where((element) =>
+                                element["transactionDirection"] == "D")
+                            .toList()
+                            .reversed
+                            .toList()
+                            .length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
                                 builder: (context) => TransactionDetail(
-                                  transactionDate:
-                                      debitFilteredCustomerData[index]
-                                          ["transactionDate"],
-                                  transactionDirection:
-                                      debitFilteredCustomerData[index]
-                                          ["transactionDirection"],
-                                  transactionNarration:
-                                      debitFilteredCustomerData[index]
-                                          ["transactionNarration"],
+                                  transactionDate: customerTransactionData
+                                      ?.where((element) =>
+                                          element["transactionDirection"] ==
+                                          "D")
+                                      .toList()
+                                      .reversed
+                                      .toList()[index]["transactionDate"],
+                                  transactionDirection: customerTransactionData
+                                      ?.where((element) =>
+                                          element["transactionDirection"] ==
+                                          "D")
+                                      .toList()
+                                      .reversed
+                                      .toList()[index]["transactionDirection"],
+                                  transactionNarration: customerTransactionData
+                                      ?.where((element) =>
+                                          element["transactionDirection"] ==
+                                          "D")
+                                      .toList()
+                                      .reversed
+                                      .toList()[index]["transactionNarration"],
                                 ),
                               );
                             },
                             child: TransactionTiles(
-                              transactionDate: debitFilteredCustomerData[index]
-                                  ["transactionDate"],
-                              transactionAmount:
-                                  debitFilteredCustomerData[index]
-                                      ["transactionAmount"],
-                              transactionDirection:
-                                  debitFilteredCustomerData[index]
-                                      ["transactionDirection"],
-                              transactionNarration:
-                                  debitFilteredCustomerData[index]
-                                      ["transactionNarration"],
+                              transactionDate: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "D")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionDate"],
+                              transactionAmount: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "D")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionAmount"],
+                              transactionDirection: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "D")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionDirection"],
+                              transactionNarration: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "D")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionNarration"],
                             ),
                           );
                         },
@@ -282,37 +275,68 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         ),
                       ),
                       ListView.separated(
-                        itemCount: creditFilteredCustomerData.length,
+                        itemCount: customerTransactionData!
+                            .where((element) =>
+                                element["transactionDirection"] == "C")
+                            .toList()
+                            .reversed
+                            .toList()
+                            .length,
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
                               showModalBottomSheet(
                                 context: context,
                                 builder: (context) => TransactionDetail(
-                                  transactionDate:
-                                      creditFilteredCustomerData[index]
-                                          ["transactionDate"],
-                                  transactionDirection:
-                                      creditFilteredCustomerData[index]
-                                          ["transactionDirection"],
-                                  transactionNarration:
-                                      creditFilteredCustomerData[index]
-                                          ["transactionNarration"],
+                                  transactionDate: customerTransactionData
+                                      ?.where((element) =>
+                                          element["transactionDirection"] ==
+                                          "C")
+                                      .toList()
+                                      .reversed
+                                      .toList()[index]["transactionDate"],
+                                  transactionDirection: customerTransactionData
+                                      ?.where((element) =>
+                                          element["transactionDirection"] ==
+                                          "C")
+                                      .toList()
+                                      .reversed
+                                      .toList()[index]["transactionDirection"],
+                                  transactionNarration: customerTransactionData
+                                      ?.where((element) =>
+                                          element["transactionDirection"] ==
+                                          "C")
+                                      .toList()
+                                      .reversed
+                                      .toList()[index]["transactionNarration"],
                                 ),
                               );
                             },
                             child: TransactionTiles(
-                              transactionDate: creditFilteredCustomerData[index]
-                                  ["transactionDate"],
-                              transactionAmount:
-                                  creditFilteredCustomerData[index]
-                                      ["transactionAmount"],
-                              transactionDirection:
-                                  creditFilteredCustomerData[index]
-                                      ["transactionDirection"],
-                              transactionNarration:
-                                  creditFilteredCustomerData[index]
-                                      ["transactionNarration"],
+                              transactionDate: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "C")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionDate"],
+                              transactionAmount: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "C")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionAmount"],
+                              transactionDirection: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "C")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionDirection"],
+                              transactionNarration: customerTransactionData
+                                  ?.where((element) =>
+                                      element["transactionDirection"] == "C")
+                                  .toList()
+                                  .reversed
+                                  .toList()[index]["transactionNarration"],
                             ),
                           );
                         },
